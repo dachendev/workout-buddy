@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
+const HomePage: React.FC = () => {
   const [count, setCount] = useState(0);
 
   return (
@@ -19,6 +20,14 @@ function App() {
       </p>
     </>
   );
-}
+};
+
+const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
+  );
+};
 
 export default App;
