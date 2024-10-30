@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "../AuthContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 interface AuthRoutesProps {

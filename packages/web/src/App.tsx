@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "./features/auth/LoginPage";
-import RegisterPage from "./features/auth/RegisterPage";
-import AuthRoutes from "./features/auth/AuthRoutes";
-import GuestRoutes from "./features/auth/GuestRoutes";
+import LoginPage from "./features/auth/pages/LoginPage";
+import RegisterPage from "./features/auth/pages/RegisterPage";
+import AuthRoutes from "./features/auth/components/AuthRoutes";
+import GuestRoutes from "./features/auth/components/GuestRoutes";
 
 const HomePage: React.FC = () => {
   const [count, setCount] = useState(0);
