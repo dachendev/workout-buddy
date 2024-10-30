@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import LoginPage from "./features/auth/LoginPage";
+import RegisterPage from "./features/auth/RegisterPage";
 
 const HomePage: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -25,6 +27,8 @@ const HomePage: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/" element={<HomePage />} />
     </Routes>
   );
