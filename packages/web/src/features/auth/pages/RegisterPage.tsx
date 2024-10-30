@@ -1,53 +1,91 @@
+import {
+  Container,
+  Card,
+  Typography,
+  Box,
+  FormControl,
+  FormLabel,
+  TextField,
+  Button,
+  Link,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
 
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConf, setPasswordConf] = useState("");
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password-conf">Confirm Password</label>
-          <input
-            type="password"
-            id="password-conf"
-            value={passwordConf}
-            onChange={(e) => setPasswordConf(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Register</button>
-        </div>
-      </form>
-    </div>
+    <Container sx={{ minHeight: "100%", padding: 2 }}>
+      <Card
+        variant="outlined"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignSelf: "center",
+          width: "100%",
+          padding: 4,
+          gap: 2,
+          margin: "auto",
+        }}
+      >
+        <Typography component="h1" variant="h4">
+          Register
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            gap: 2,
+          }}
+        >
+          <FormControl>
+            <FormLabel htmlFor="username">Username</FormLabel>
+            <TextField
+              type="text"
+              id="username"
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoFocus
+              required
+              fullWidth
+              variant="outlined"
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <TextField
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+              variant="outlined"
+            />
+          </FormControl>
+          <Button variant="contained" type="submit" fullWidth>
+            Register
+          </Button>
+          <Typography>
+            Already have an account?{" "}
+            <Link component={RouterLink} to="/login">
+              Login
+            </Link>
+          </Typography>
+        </Box>
+      </Card>
+    </Container>
   );
 };
 

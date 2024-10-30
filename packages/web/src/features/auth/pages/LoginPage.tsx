@@ -1,3 +1,15 @@
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  FormControl,
+  FormLabel,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
 
 const LoginPage: React.FC = () => {
@@ -9,34 +21,71 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
+    <Container sx={{ minHeight: "100%", padding: 2 }}>
+      <Card
+        variant="outlined"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignSelf: "center",
+          width: "100%",
+          padding: 4,
+          gap: 2,
+          margin: "auto",
+        }}
+      >
+        <Typography component="h1" variant="h4">
+          Login
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            gap: 2,
+          }}
+        >
+          <FormControl>
+            <FormLabel htmlFor="username">Username</FormLabel>
+            <TextField
+              type="text"
+              id="username"
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoFocus
+              required
+              fullWidth
+              variant="outlined"
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <TextField
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+              variant="outlined"
+            />
+          </FormControl>
+          <Button variant="contained" type="submit" fullWidth>
+            Login
+          </Button>
+          <Typography>
+            Don't have an account?{" "}
+            <Link component={RouterLink} to="/register">
+              Register
+            </Link>
+          </Typography>
+        </Box>
+      </Card>
+    </Container>
   );
 };
 
