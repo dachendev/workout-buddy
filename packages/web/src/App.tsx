@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./features/auth/LoginPage";
 import RegisterPage from "./features/auth/RegisterPage";
+import AuthRoutes from "./features/auth/AuthRoutes";
+import GuestRoutes from "./features/auth/GuestRoutes";
 
 const HomePage: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -28,8 +30,12 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/" element={<HomePage />} />
+      <Route element={<GuestRoutes redirectTo="/" />}>
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
+      <Route element={<AuthRoutes redirectTo="/login" />}>
+        <Route path="/" element={<HomePage />} />
+      </Route>
     </Routes>
   );
 };
