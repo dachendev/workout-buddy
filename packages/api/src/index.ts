@@ -1,5 +1,8 @@
+require('dotenv').config();
 import express from "express";
 import cors from "cors";
+
+const { createUser } = require("../controllers/users");
 
 const app = express();
 const port = 3001;
@@ -7,6 +10,9 @@ const port = 3001;
 // middleware
 app.use(cors());
 app.use(express.json());
+
+//Login Route
+app.post("/register", createUser);
 
 app.get("/", (req, res) => {
   res.send("Hello Express!");
